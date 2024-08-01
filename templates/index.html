@@ -21,5 +21,13 @@
         <br>
         <button type="submit">Execute</button>
     </form>
+    <div id="output">
+        {% if output %}
+            <pre>{{ output }}</pre>
+        {% endif %}
+        {% if error %}
+            <pre>{{ error }}</pre>
+        {% endif %}
+    </div>
 </body>
 </html>
