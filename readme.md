@@ -2,7 +2,7 @@
 #
 ####
     git clone https://github.com/SumonPaul18/easylinux.git
-    cd python-compose
+    cd easylinux
     docker compose up -d
 ####
     docker container prune
