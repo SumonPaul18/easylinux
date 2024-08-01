@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Command Executor</title>
+</head>
+<body>
+ <h2> Linux Server</h2>
+    <form method="POST">
+        <select name="command">
+            {% for command in commands %}
+                <option value="{{ command }}">{{ command }}</option>
+            {% endfor %}
+        </select>
+        <button type="submit">Execute</button>
+    </form>
+    <div id="output">
+        {% if output %}
+            <pre>{{ output }}</pre>
+        {% endif %}
+        {% if error %}
+            <pre>{{ error }}</pre>
+        {% endif %}
+    </div>
+</body>
+</html>
