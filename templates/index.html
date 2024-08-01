@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SSH Terminal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>SSH Terminal</h1>
+    <form method="post">
+        <label for="ip_address">IP Address:</label>
+        <input type="text" name="ip_address" id="ip_address" required>
+        <br>
+        <label for="username">Username:</label>
+        <input type="text" name="username" id="username" required>
+        <br>
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" required>
+        <br>
+        <label for="command">Command:</label>
+        <input type="text" name="command" id="command" required>
+        <br>
+        <button type="submit">Execute</button>
+    </form>
+</body>
+</html>
