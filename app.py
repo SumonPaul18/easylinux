@@ -25,6 +25,8 @@ def index():
 
         output, error = ssh_command(ip_address, username, password, command)
         return render_template('output.html', output=output, error=error)
+        #return render_template('index.html', commands=commands, output=output, error=error)
+
 
     return render_template('index.html')
 
