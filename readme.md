@@ -1,4 +1,5 @@
 #
+<<<<<<< HEAD
 # Build Web Based SSH Ternimal using python flask paramiko 
 This app using are python, html, css, yml, dockerfile all togeather. 
 ## Just Run all Command on Step by Steps 
@@ -11,6 +12,12 @@ This app using are python, html, css, yml, dockerfile all togeather.
 ####
     git clone https://github.com/SumonPaul18/easylinux.git
     cd easylinux
+=======
+#
+####
+    git clone https://github.com/SumonPaul18/easylinux.git
+    cd python-compose
+>>>>>>> 5686fd1 (css update)
     docker compose up -d
 ####
     docker compose ps
@@ -21,3 +28,11 @@ http://DockerHostIP/5000
 ####
     docker compose down
 ####
+<<<<<<< HEAD
+=======
+    docker compose ps
+####
+    
+####
+    
+>>>>>>> 5686fd1 (css update)
