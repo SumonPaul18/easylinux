@@ -24,9 +24,8 @@ def index():
         command = request.form['command']
 
         output, error = ssh_command(ip_address, username, password, command)
-        return render_template('output.html', output=output, error=error)
-        #return render_template('index.html', commands=commands, output=output, error=error)
-
+        # Now return the index template with output and error variables
+        return render_template('index.html', output=output, error=error)
 
     return render_template('index.html')
 
