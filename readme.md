@@ -8,13 +8,9 @@ This app using are python, html, css, yml, dockerfile all togeather.
 - Root access
 
 #### Copy and Paste on Terminal 
-####
+
     git clone https://github.com/SumonPaul18/easylinux.git
     cd easylinux
-#
-####
-    git clone https://github.com/SumonPaul18/easylinux.git
-    cd python-compose
     docker compose up -d
 ####
     docker compose ps
