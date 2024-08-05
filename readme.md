@@ -16,8 +16,8 @@ This app using are python, html, css, yml, dockerfile all togeather.
     docker compose ps
 
 Now Open the App on Browser     
-####
-   http://127.0.0.1/5000 
+
+http://DockerHostIP/5000
 ####
     docker compose down
 ####
