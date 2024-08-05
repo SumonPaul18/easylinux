@@ -28,5 +28,3 @@ http://DockerHostIP/5000
     docker compose ps
 ####
     
-####
-    
