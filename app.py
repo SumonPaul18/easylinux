@@ -1,32 +1,42 @@
-from flask import Flask, render_template, request
 import paramiko
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
-def ssh_command(ip_address, username, password, command):
-    ssh = paramiko.SSHClient()
-    ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    ssh.connect(ip_address, username=username, password=password)
-
-    stdin, stdout, stderr = ssh.exec_command(command)
-    output = stdout.read().decode('utf-8')
-    error = stderr.read().decode('utf-8')
-    ssh.close()
-
-    return output, error
+def ssh_connect(hostname, username, pkey_file):
+    try:
+        transport = paramiko.Transport((hostname, 22))
+        transport.connect(username=username, pkey=paramiko.RSAKey.from_private_key_file(pkey_file))
+        sftp = paramiko.SFTPClient.from_transport(transport)
+        return sftp, transport
+    except Exception as e:
+        return None, None
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
     if request.method == 'POST':
-        ip_address = request.form['ip_address']
+        hostname = request.form['hostname']
         username = request.form['username']
-        password = request.form['password']  # Securely handle passwords
+        pkey_file = request.form ['pkey']  # Replace with actual path
         command = request.form['command']
 
-        output, error = ssh_command(ip_address, username, password, command)
-        # Now return the index template with output and error variables
-        return render_template('index.html', output=output, error=error)
+        sftp, transport = ssh_connect(hostname, username, pkey_file)
+        if sftp:
+            try:
+                # Execute command or perform file operations using sftp
+                stdin, stdout, stderr = transport.open_session()
+                stdin.write(command + '\n')
+                stdin.flush()
 
+                output = stdout.read().decode('utf-8')
+                error = stderr.read().decode('utf-8')
+
+                # Process output and error as needed
+                return render_template('result.html', output=output, error=error)
+            finally:
+                transport.close()
+        else:
+            return render_template('error.html', message='SSH connection failed')
     return render_template('index.html')
 
 if __name__ == '__main__':

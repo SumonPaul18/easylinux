@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Command Output</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>Command Output</h1>
+    <pre>{{ output }}</pre>
+    {% if error %}
+        <p style="color: red;">Error: {{ error }}</p>
+    {% endif %}
+</body>
+</html>
