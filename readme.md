@@ -1,5 +1,4 @@
-Version: easylinux-v.2
-#
+<b>Version:</b> easylinux-v.2
 # Build Web Based SSH Ternimal using python flask paramiko 
 This app using are python, html, css, yml, dockerfile all togeather. 
 ## Just Run all Command on Step by Steps 
