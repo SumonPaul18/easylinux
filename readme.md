@@ -7,6 +7,9 @@ This app using are python, html, css, yml, dockerfile all togeather.
 - Installed: Docker & Docker Compose, git
 - Root access
 
+#### Deploy on Linux Host
+    git clone --single-branch --branch easylinux-v.2 https://github.com/SumonPaul18/easylinux.git
+
 #### Copy and Paste on Terminal 
 
     git clone https://github.com/SumonPaul18/easylinux.git
