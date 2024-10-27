@@ -13,7 +13,7 @@ This Application builds on python, html, css, yml, dockerfile all togeather.
 
 #### Copy and Paste on Terminal 
 
-    git clone https://github.com/SumonPaul18/easylinux.git
+    git clone --single-branch --branch easylinux-v.2 https://github.com/SumonPaul18/easylinux.git
     cd easylinux
     docker compose up -d
 ####
