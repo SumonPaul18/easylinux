@@ -1,32 +1,57 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>SSH Terminal</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flask App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+        function closeOutput() {
+            document.getElementById('output').style.display = 'none';
+        }
+
+        function showPopup(message) {
+            var popup = document.getElementById('popup');
+            popup.innerText = message;
+            popup.style.display = 'block';
+            setTimeout(function() {
+                popup.style.display = 'none';
+            }, 5000);  // Popup will hide after 5 seconds
+        }
+    </script>
 </head>
 <body>
-    <h1 id="hh">SSH Terminal</h1>
-    <form id="f1" method="post">
-        <label for="ip_address">IP Address:</label>
-        <input type="text" name="ip_address" id="ip_address" required>
-        <br>
-        <label for="username">Username:</label>
-        <input type="text" name="username" id="username" required>
-        <br>
-        <label for="password">Password:</label>
-        <input type="password" name="password" id="password" required>
-        <br>
-        <label for="command">Command:</label>
-        <input type="text" name="command" id="command" required>
-        <br>
-        <button type="submit">Execute</button>
-    </form>
-    <div id="output">
+    <div class="container">
+        <h1>Input Data</h1>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <script>
+                    showPopup('{{ messages[0] }}');
+                </script>
+            {% endif %}
+        {% endwith %}
+        <form method="POST" onsubmit="showPopup('Data saved successfully!')">
+            <label for="input1">Input 1:</label>
+            <input type="text" id="input1" name="input1" required>
+            <label for="input2">Input 2:</label>
+            <input type="text" id="input2" name="input2" required>
+            <label for="input3">Input 3:</label>
+            <input type="text" id="input3" name="input3" required>
+            <button type="submit">Create</button>
+        </form>
         {% if output %}
-            <pre>{{ output }}</pre>
+            <div id="output" class="output">
+                <button onclick="closeOutput()">Close</button>
+                <h2>Script Output:</h2>
+                <pre>{{ output }}</pre>
+            </div>
         {% endif %}
-        {% if error %}
-            <pre>{{ error }}</pre>
+        <div id="popup" class="popup"></div>
+        {% if not current_user.is_authenticated %}
+            <a href="{{ url_for('login') }}">Login</a>
+        {% else %}
+            <p>Welcome, {{ current_user.name }}!</p>
+            <a href="{{ url_for('logout') }}">Logout</a>
         {% endif %}
     </div>
 </body>
